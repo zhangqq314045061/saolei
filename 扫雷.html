@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>扫雷</title>
+</head>
+<style>
+	*{
+		padding:0;
+		margin:0;
+		list-style: none;
+	}
+	html{
+		width:1000px;
+		height:100px;
+	}
+	
+	.box{
+		height:600px;
+		width:600px;
+		border:1px solid #43f598;
+		position: absolute;
+		margin:auto;
+		left:0;
+		top:0;
+		right:0;
+		bottom:0;
+		display: none;
+
+	}
+	.box1{
+		height:600px;
+		width:600px;
+		border:1px solid #43f598;
+		position: absolute;
+		margin:auto;
+		left:0;
+		top:0;
+		right:0;
+		bottom:0;
+		/*z-index: 1;*/
+		background-image: url(2q.jpg);
+		/*animation:sa 5s .9s;*/
+
+	}
+
+	@keyframes sa{
+		from{height:0;}
+		to{
+			height:600;
+		}
+	}
+		@keyframes ss{
+		from{height:0;width:0;}
+		to{
+			height:600;width:600;
+		}
+	}
+	.box2{
+		height:60%;
+		width:60%;
+		border:1px solid #43f598;
+		position: absolute;
+		margin:auto;
+		left:0;
+		top:0;
+		right:0;
+		bottom:0;
+		background:#2467f3;
+		border-radius:60%;
+		display: none;
+
+	}
+	.block{
+		height:58px;
+		width:58px;
+		background: #d3f499;
+		border:1px solid #fff;
+		float:left;
+		text-align: center;
+		line-height: 58px
+	}
+	.biaoji::after{
+		content:'⚑';
+		color:red;
+	}
+	.tip{
+		background: #fff;
+	}
+	.xiao{
+		height:70px;
+		width:140px;
+		font-size: 30px;
+		font-family: "苹方","微软雅黑";
+		text-align: center;
+		line-height: 70px;
+		background-image:url(image/4.png);
+		position: absolute;
+		margin:auto;
+		left:0;
+		top:0;
+		right:0;
+		bottom:0;
+		display: none;
+		cursor: pointer;
+	}
+	/*.lei{
+		
+		color:#ff3456;
+		font-weight: bold;
+	}*/
+	.xixi{
+		display: inline-block;
+		/*padding:10px 30px;*/
+		background-image:url(image/4.png);
+		line-height: 70px;
+		text-align: center;
+		height:70px;
+		width:140px;
+		cursor: pointer; 
+		color:#fff;
+		font-weight: bold;
+		/*position: absolute;*/
+	}
+	.xaxa{
+		text-align: center;
+		line-height: 70px;
+		display: inline-block;
+		/*padding:10px 30px;*/
+		height:70px;
+		width:140px;
+		color:#fff;
+		font-weight: bold;
+		background-image:url(image/4.png);
+		cursor: pointer; 
+
+	}
+	.div{
+		height: 70px;
+		width:300px;
+		margin-top:440px;
+		margin-left:150px;
+	}
+	#aaa{
+		color:#f18973;
+	}
+	.fengs{
+		height:15px;
+		width:200px;
+		border:1px solid #ff2311;
+		position: absolute;
+	}
+	.feng{
+		height:100%;
+		width:75%;
+		background:#12f876;
+		position: absolute;
+		text-align: center;
+		color:#000;
+		font-weight: bold;
+	}
+	pre{
+		padding:100px 0;
+		color:#fff;
+		font-size: 16px;
+	}
+#asa{
+		position: absolute;
+		margin:auto;
+		left: 0;
+		top:0;
+		right:0;
+		bottom: 0;
+		height:768px;
+		width:1024px;
+		/*background: red;*/
+		/*background-image:url(she/saolei.jpg);*/
+		background-repeat: no-repeat;
+	}
+	
+
+</style>
+<body>
+	<!-- <div class="asa"></div> -->
+	
+<div class="box1">
+    <div class="box2">
+    	<pre>
+    	  刚刚接触电脑的时候就是会
+    	玩这个简单的游戏了。 一款
+    	流行很广的休闲小游戏,规则
+    	简单明了有趣且不费神,适合
+    	在你休息之余、无聊之时轻松
+    	一下.
+    </pre>
+    </div>	
+		<div id="aaa">时间倒计时</div>
+	<div class="div">
+		<div class="xaxa">游戏介绍</div>
+		<div class="xixi">开始游戏</div>
+	</div>
+	</div>
+  
+	<div class="box">
+		
+	</div>
+
+	<div class="xiao"></div>
+
+	
+<script src="jquery-1.12.0.js"></script>
+
+<script>
+$('.xaxa').on('click',function(){
+ $('.box2').css('display','block');
+})
+$('.box2').on('dblclick',function(){
+ $('.box2').css('display','none');
+})
+
+
+
+
+
+
+var maxtime = 0.5*60;
+function daojishi(){    
+	if(maxtime>=0){   hours= Math.floor(maxtime/60/60);  
+		minutes = Math.floor((maxtime-hours*60*60)/60);    
+		seconds = Math.floor(maxtime%60);    
+		msg = "距离开始还有"+hours+"时"+minutes+"分"+seconds+"秒";   
+		document.getElementById('aaa').innerHTML=msg;    
+		if(maxtime == 5*60) 
+			alert('注意，还有5分钟!');    --maxtime;  }   
+		else{    clearInterval(timer);    
+			$('.box').css('display','block')    }   
+		}
+		timer = setInterval("daojishi()",1000);
+
+
+
+
+
+
+
+		$('.xixi').on('click',function(){
+			$('.box').css('display','block')
+		})
+		// $(document).on('contextmenu',false);
+
+		var hang=10;
+		var xy=function(x,y){
+			return x+'-'+y;
+		}
+var jisuan=function(x,y){
+	var num=0;
+	if($('#'+xy(x,y-1)).is('.lei')){num++}
+	if($('#'+xy(x,y+1)).is('.lei')){num++}
+	if($('#'+xy(x-1,y)).is('.lei')){num++}
+	if($('#'+xy(x+1,y)).is('.lei')){num++}
+	if($('#'+xy(x-1,y-1)).is('.lei')){num++}
+	if($('#'+xy(x-1,y+1)).is('.lei')){num++}
+	if($('#'+xy(x+1,y-1)).is('.lei')){num++}
+	if($('#'+xy(x+1,y+1)).is('.lei')){num++}
+	return num;
+}
+
+function left(e){
+	if($(this).is('.biaoji')){return}
+	if(e.data.lei){
+		$('.lei').html('');
+		$('.lei').css('background-image','url(12b.png)');
+        
+		$('.xiao').css('display','block').html('游戏结束');
+		$('.block').off('mousedown')
+	}else{$(this).text(jisuan(e.data.x,e.data.y)).addClass('tip');}
+
+}
+
+
+
+$('.xiao').on('dblclick',function(){
+	$('.xiao').css('display','none')
+	$('.lei').html('lei')
+		$('.box').empty();
+	for(var i=0;i<hang;i++){
+  for(var j=0;j<hang;j++){
+  	var lei=Math.random()>0.9;
+    $('<div>')
+    .addClass(function(){
+    	 return 'block '+(lei?'lei':'')
+    })
+    .attr('id',xy(i,j))
+    .on('mousedown',{x:i,y:j,lei:lei},clickHander)
+    // .text(function(){
+    // 	return lei?'lei':'';
+
+    // })
+    .appendTo($('.box'))
+
+
+  }
+
+
+}
+})
+$('.xiao').on('click',function(){
+	$('.xiao').html('再来一局')
+	$('.xiao').toggleClass('hh')	
+})
+function right(e){
+	if($(this).is('.tip')){return}
+	$(this).toggleClass('biaoji')
+
+  if($('.biaoji').length===$('.lei').length){
+  	if($('.biaoji.lei').length===$('.biaoji').length){
+  		
+  		$('.xiao').css('display','block');
+  		$('.xiao').html('胜利');}
+  	
+  }
+	
+}
+function clickHander(e){
+	if(e.which===1){
+		$.proxy(left,this)(e)
+	} 
+	if(e.which===3){
+		$.proxy(right,this)(e)
+
+	}
+}
+for(var i=0;i<hang;i++){
+  for(var j=0;j<hang;j++){
+  	var lei=Math.random()>0.9;
+    $('<div>')
+    .addClass(function(){
+    	 return 'block '+(lei?'lei':'')
+    })
+    .attr('id',xy(i,j))
+    .on('mousedown',{x:i,y:j,lei:lei},clickHander)
+    // .text(function(){
+    // 	return lei?'lei':'';
+
+    // })
+    .appendTo($('.box'))
+
+
+  }
+
+
+}
+
+
+    
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
